@@ -14,10 +14,10 @@ jobs:
     
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: '14'
 
@@ -28,7 +28,7 @@ jobs:
         run: npm test
 
       - name: Upload test results as an artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v3.1.2
         with:
           name: test-results
           path: test-results.xml  # Ensure this file exists
@@ -39,10 +39,10 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Download test results artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v3.1.2
         with:
           name: test-results
 
@@ -50,7 +50,7 @@ jobs:
         run: cat test-results.xml
 
       - name: Set up Node.js on self-hosted runner
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
           node-version: "14"
 
