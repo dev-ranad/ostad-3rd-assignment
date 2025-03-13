@@ -27,11 +27,8 @@ jobs:
       - name: Remove old test results
         run: rm -rf test-results
 
-      - name: Run tests and generate results
-        run: npx mocha --reporter mocha-junit-reporter --reporter-options mochaFile=test-results/test-results.xml
-
-      - name: Verify test results exist
-        run: ls -l test-results/ || echo "test-results.xml not found!"
+      - name: Run tests
+        run: npm test
 
       - name: Upload test results as an artifact
         uses: actions/upload-pages-artifact@v3
