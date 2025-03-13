@@ -28,9 +28,7 @@ jobs:
         run: rm -rf test-results
 
       - name: Run tests and generate results
-        run: |
-          mkdir -p test-results
-          npx mocha --reporter mocha-junit-reporter --reporter-options mochaFile=test-results/test-results.xml
+        run: npx mocha --reporter mocha-junit-reporter --reporter-options mochaFile=test-results/test-results.xml
 
       - name: Verify test results exist
         run: ls -l test-results/ || echo "test-results.xml not found!"
